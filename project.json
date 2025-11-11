@@ -2,60 +2,16 @@
   "project_uid": "twwonv",
   "type": "fullstack",
   "files": [
-    "package.json",
-    "client/package.json",
-    "client/vite.config.js",
-    "client/tailwind.config.js",
-    "client/postcss.config.js",
-    "client/index.html",
-    "client/src/main.jsx",
-    "client/src/App.css",
-    "client/src/App.jsx",
     "client/src/contexts/AuthContext.jsx",
-    "client/src/contexts/JobContext.jsx",
-    "client/src/components/Navbar.jsx",
-    "client/src/components/ProtectedRoute.jsx",
-    "client/src/pages/Home.jsx",
-    "client/src/pages/Jobs.jsx",
-    "client/src/pages/JobDetails.jsx",
-    "client/src/pages/Login.jsx",
-    "client/src/pages/Register.jsx",
-    "client/src/pages/PostJob.jsx",
-    "client/src/pages/ATSImprovement.jsx",
-    "client/src/pages/CodingChallenge.jsx",
-    "server/server.js",
-    "server/package.json"
+    "client/src/pages/Login.jsx"
   ],
   "structure": {
     "client": [
-      "client/package.json",
-      "client/vite.config.js",
-      "client/tailwind.config.js",
-      "client/postcss.config.js",
-      "client/index.html",
-      "client/src/main.jsx",
-      "client/src/App.css",
-      "client/src/App.jsx",
       "client/src/contexts/AuthContext.jsx",
-      "client/src/contexts/JobContext.jsx",
-      "client/src/components/Navbar.jsx",
-      "client/src/components/ProtectedRoute.jsx",
-      "client/src/pages/Home.jsx",
-      "client/src/pages/Jobs.jsx",
-      "client/src/pages/JobDetails.jsx",
-      "client/src/pages/Login.jsx",
-      "client/src/pages/Register.jsx",
-      "client/src/pages/PostJob.jsx",
-      "client/src/pages/ATSImprovement.jsx",
-      "client/src/pages/CodingChallenge.jsx"
+      "client/src/pages/Login.jsx"
     ],
-    "server": [
-      "server/server.js",
-      "server/package.json"
-    ],
-    "root": [
-      "package.json"
-    ]
+    "server": [],
+    "root": []
   },
-  "file_count": 23
+  "file_count": 2
 }
