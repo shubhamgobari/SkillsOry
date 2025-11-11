@@ -1,0 +1,17 @@
+{
+      "name": "talentflow-recruitment-platform",
+      "version": "1.0.0",
+      "private": true,
+      "workspaces": ["client"],
+      "scripts": {
+        "dev": "cd client && npm run dev",
+        "build": "cd client && npm run build",
+        "preview": "cd client && npm run preview",
+        "install:all": "npm install && cd client && npm install",
+        "clean": "cd client && rm -rf node_modules dist && npm install",
+        "start": "cd client && npm run preview"
+      },
+      "devDependencies": {
+        "concurrently": "^8.2.2"
+      }
+    }
