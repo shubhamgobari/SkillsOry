@@ -16,20 +16,23 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Initialize demo accounts if they don't exist
+    // Initialize demo accounts first, then check for existing user session
     initializeDemoAccounts()
     
     // Check for existing user session
     const savedUser = localStorage.getItem('talentflow_user')
     if (savedUser) {
-      setUser(JSON.parse(savedUser))
+      try {
+        setUser(JSON.parse(savedUser))
+      } catch (error) {
+        console.error('Error parsing saved user:', error)
+        localStorage.removeItem('talentflow_user')
+      }
     }
     setLoading(false)
   }, [])
 
   const initializeDemoAccounts = () => {
-    const existingUsers = JSON.parse(localStorage.getItem('talentflow_users') || '[]')
-    
     const demoAccounts = [
       {
         id: 'demo-candidate-1',
@@ -57,26 +60,27 @@ export const AuthProvider = ({ children }) => {
       }
     ]
 
-    // Check if demo accounts already exist
-    const demoAccountsExist = demoAccounts.every(demo => 
-      existingUsers.some(user => user.email === demo.email)
+    // Always ensure demo accounts exist
+    const existingUsers = JSON.parse(localStorage.getItem('talentflow_users') || '[]')
+    
+    // Remove any existing demo accounts to avoid duplicates
+    const nonDemoUsers = existingUsers.filter(user => 
+      !demoAccounts.some(demo => demo.email === user.email)
     )
-
-    if (!demoAccountsExist) {
-      // Remove existing demo accounts and add fresh ones
-      const nonDemoUsers = existingUsers.filter(user => 
-        !demoAccounts.some(demo => demo.email === user.email)
-      )
-      
-      const updatedUsers = [...nonDemoUsers, ...demoAccounts]
-      localStorage.setItem('talentflow_users', JSON.stringify(updatedUsers))
-    }
+    
+    // Add fresh demo accounts
+    const updatedUsers = [...nonDemoUsers, ...demoAccounts]
+    localStorage.setItem('talentflow_users', JSON.stringify(updatedUsers))
+    
+    console.log('Demo accounts initialized:', demoAccounts.map(acc => acc.email))
   }
 
   const login = async (email, password) => {
     try {
-      // Mock authentication - in real app, this would be an API call
+      // Get fresh user data from localStorage
       const users = JSON.parse(localStorage.getItem('talentflow_users') || '[]')
+      console.log('Available users:', users.map(u => u.email))
+      
       const foundUser = users.find(u => u.email === email && u.password === password)
       
       if (foundUser) {
@@ -90,13 +94,17 @@ export const AuthProvider = ({ children }) => {
         return { success: false, error: 'Invalid credentials' }
       }
     } catch (error) {
+      console.error('Login error:', error)
       toast.error('Login failed')
       return { success: false, error: error.message }
     }
   }
 
   const loginWithDemo = async (email, password) => {
-    // Auto-login with demo account
+    console.log('Demo login attempt:', email)
+    // Ensure demo accounts are available before login
+    initializeDemoAccounts()
+    // Use the regular login function
     return await login(email, password)
   }
 

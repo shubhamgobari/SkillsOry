@@ -72,26 +72,35 @@ const Login = () => {
   ]
 
   const handleDemoLogin = async (email, password) => {
-    setLoading(true)
-    const result = await loginWithDemo(email, password)
+    if (loading) return // Prevent multiple clicks
     
-    if (result.success) {
-      // Redirect based on user role
-      switch (result.user.role) {
-        case 'candidate':
-          navigate('/candidate-dashboard')
-          break
-        case 'client':
-          navigate('/client-dashboard')
-          break
-        case 'admin':
-          navigate('/admin-dashboard')
-          break
-        default:
-          navigate('/')
+    setLoading(true)
+    console.log('Demo login clicked:', email)
+    
+    try {
+      const result = await loginWithDemo(email, password)
+      
+      if (result.success) {
+        // Redirect based on user role
+        switch (result.user.role) {
+          case 'candidate':
+            navigate('/candidate-dashboard')
+            break
+          case 'client':
+            navigate('/client-dashboard')
+            break
+          case 'admin':
+            navigate('/admin-dashboard')
+            break
+          default:
+            navigate('/')
+        }
       }
+    } catch (error) {
+      console.error('Demo login error:', error)
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   return (
