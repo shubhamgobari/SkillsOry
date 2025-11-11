@@ -1,0 +1,27 @@
+{
+  "project_uid": "twwonv",
+  "type": "fullstack",
+  "files": [
+    "client/src/pages/ClientDashboard.jsx",
+    "client/src/pages/CandidateDashboard.jsx",
+    "client/src/pages/AdminDashboard.jsx",
+    "server/server.js",
+    "server/package.json",
+    "README.md"
+  ],
+  "structure": {
+    "client": [
+      "client/src/pages/ClientDashboard.jsx",
+      "client/src/pages/CandidateDashboard.jsx",
+      "client/src/pages/AdminDashboard.jsx"
+    ],
+    "server": [
+      "server/server.js",
+      "server/package.json"
+    ],
+    "root": [
+      "README.md"
+    ]
+  },
+  "file_count": 6
+}

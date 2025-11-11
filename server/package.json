@@ -1,0 +1,9 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Empty server - frontend only",
+  "main": "server.js",
+  "scripts": {
+    "start": "echo 'Frontend-only application'"
+  }
+}
