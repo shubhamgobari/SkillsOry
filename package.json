@@ -4,12 +4,17 @@
       "private": true,
       "workspaces": ["client"],
       "scripts": {
-        "dev": "cd client && npm run dev",
-        "build": "cd client && npm run build",
+        "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+        "client:dev": "cd client && npm run dev",
+        "server:dev": "cd server && mvn spring-boot:run",
+        "server:build": "cd server && mvn clean package",
+        "build": "npm run server:build && cd client && npm run build",
         "preview": "cd client && npm run preview",
         "install:all": "npm install && cd client && npm install",
-        "clean": "cd client && rm -rf node_modules dist && npm install",
-        "start": "cd client && npm run preview"
+        "clean": "cd client && rm -rf node_modules dist && npm install && cd ../server && mvn clean",
+        "start": "concurrently \"npm run server:start\" \"npm run client:preview\"",
+        "server:start": "cd server && java -jar target/*.jar",
+        "test": "cd server && mvn test && cd ../client && npm test"
       },
       "devDependencies": {
         "concurrently": "^8.2.2"

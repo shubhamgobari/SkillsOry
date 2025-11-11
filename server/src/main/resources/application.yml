@@ -1,0 +1,80 @@
+server:
+      port: 8080
+      servlet:
+        context-path: /
+
+    spring:
+      application:
+        name: talentflow-backend
+      
+      # Database Configuration
+      datasource:
+        url: jdbc:h2:mem:talentflow
+        driverClassName: org.h2.Driver
+        username: sa
+        password: password
+      
+      # JPA Configuration
+      jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+          ddl-auto: create-drop
+        show-sql: true
+        properties:
+          hibernate:
+            format_sql: true
+      
+      # H2 Console (for development)
+      h2:
+        console:
+          enabled: true
+          path: /h2-console
+          settings:
+            web-allow-others: true
+
+    # Logging Configuration
+    logging:
+      level:
+        com.talentflow: DEBUG
+        org.springframework.security: DEBUG
+        org.springframework.web.cors: DEBUG
+
+    # Custom Application Properties
+    app:
+      jwt:
+        secret: talentflow-secret-key-change-in-production
+        expiration: 86400000 # 24 hours in milliseconds
+  </svAction>
+
+  <savAction type="file" filePath="server/src/main/resources/application-prod.yml">
+    server:
+      port: ${PORT:8080}
+
+    spring:
+      # Production Database Configuration
+      datasource:
+        url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/talentflow}
+        username: ${DB_USERNAME:talentflow}
+        password: ${DB_PASSWORD:password}
+        driverClassName: org.postgresql.Driver
+      
+      jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+          ddl-auto: validate
+        show-sql: false
+      
+      h2:
+        console:
+          enabled: false
+
+    logging:
+      level:
+        com.talentflow: INFO
+        org.springframework.security: WARN
+        org.springframework.web.cors: WARN
+
+    app:
+      jwt:
+        secret: ${JWT_SECRET:your-production-secret-key}
+        expiration: ${JWT_EXPIRATION:86400000}
