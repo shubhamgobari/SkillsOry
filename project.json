@@ -2,42 +2,20 @@
   "project_uid": "twwonv",
   "type": "fullstack",
   "files": [
-    "server/pom.xml",
-    "server/src/main/java/com/talentflow/TalentFlowApplication.java",
-    "server/src/main/java/com/talentflow/config/CorsConfig.java",
-    "server/src/main/java/com/talentflow/controller/JobController.java",
-    "server/src/main/java/com/talentflow/controller/ApplicationController.java",
-    "server/src/main/java/com/talentflow/controller/AuthController.java",
-    "server/src/main/resources/application.yml",
-    "client/src/services/api.js",
-    "client/src/hooks/useApi.js",
-    "package.json",
-    "client/.env.development",
-    "client/.env.production",
-    "server/src/main/java/com/talentflow/config/SecurityConfig.java",
-    "README.md"
+    "client/src/pages/CoderPad.jsx",
+    "client/src/App.jsx",
+    "client/src/contexts/JobContext.jsx",
+    "client/src/pages/CandidateDashboard.jsx"
   ],
   "structure": {
     "client": [
-      "client/src/services/api.js",
-      "client/src/hooks/useApi.js",
-      "client/.env.development",
-      "client/.env.production"
+      "client/src/pages/CoderPad.jsx",
+      "client/src/App.jsx",
+      "client/src/contexts/JobContext.jsx",
+      "client/src/pages/CandidateDashboard.jsx"
     ],
-    "server": [
-      "server/pom.xml",
-      "server/src/main/java/com/talentflow/TalentFlowApplication.java",
-      "server/src/main/java/com/talentflow/config/CorsConfig.java",
-      "server/src/main/java/com/talentflow/controller/JobController.java",
-      "server/src/main/java/com/talentflow/controller/ApplicationController.java",
-      "server/src/main/java/com/talentflow/controller/AuthController.java",
-      "server/src/main/resources/application.yml",
-      "server/src/main/java/com/talentflow/config/SecurityConfig.java"
-    ],
-    "root": [
-      "package.json",
-      "README.md"
-    ]
+    "server": [],
+    "root": []
   },
-  "file_count": 14
+  "file_count": 4
 }

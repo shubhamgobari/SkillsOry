@@ -113,6 +113,22 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
         setApplications(updatedApplications)
         localStorage.setItem('talentflow_applications', JSON.stringify(updatedApplications))
         
+        // Send CoderPad link via email simulation
+        setTimeout(() => {
+          const coderpadLink = `${window.location.origin}/coderpad/${newApplication.id}?token=${btoa(newApplication.id)}`
+          toast.success(
+            `📧 CoderPad link sent to ${applicationData.candidateEmail}!\n🔗 ${coderpadLink}`,
+            { 
+              duration: 8000,
+              style: {
+                background: '#059669',
+                color: '#fff',
+                maxWidth: '500px'
+              }
+            }
+          )
+        }, 2000)
+        
         toast.success('Application submitted successfully!')
         return newApplication
       }

@@ -15,6 +15,7 @@ import React from 'react'
     import AdminDashboard from './pages/AdminDashboard'
     import ATSImprovement from './pages/ATSImprovement'
     import CodingChallenge from './pages/CodingChallenge'
+    import CoderPad from './pages/CoderPad'
     import ProtectedRoute from './components/ProtectedRoute'
 
     function App() {
@@ -22,7 +23,7 @@ import React from 'react'
         <AuthProvider>
           <JobProvider>
             <Router>
-              <div data-component-path="client/src/App.jsx" data-component-line="23:4" data-component-id="client/src/App.jsx:23:4" className="min-h-screen bg-gray-50">
+              <div data-component-path="client/src/App.jsx" data-component-line="24:4" data-component-id="client/src/App.jsx:24:4" className="min-h-screen bg-gray-50">
                 <Navbar />
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -77,6 +78,10 @@ import React from 'react'
                         <CodingChallenge />
                       </ProtectedRoute>
                     } 
+                  />
+                  <Route 
+                    path="/coderpad/:applicationId" 
+                    element={<CoderPad />} 
                   />
                 </Routes>
                 <Toaster 
