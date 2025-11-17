@@ -2,20 +2,14 @@
   "project_uid": "twwonv",
   "type": "fullstack",
   "files": [
-    "client/src/pages/CoderPad.jsx",
-    "client/src/App.jsx",
-    "client/src/contexts/JobContext.jsx",
-    "client/src/pages/CandidateDashboard.jsx"
+    "TalentFlow-System-Flow.md"
   ],
   "structure": {
-    "client": [
-      "client/src/pages/CoderPad.jsx",
-      "client/src/App.jsx",
-      "client/src/contexts/JobContext.jsx",
-      "client/src/pages/CandidateDashboard.jsx"
-    ],
+    "client": [],
     "server": [],
-    "root": []
+    "root": [
+      "TalentFlow-System-Flow.md"
+    ]
   },
-  "file_count": 4
+  "file_count": 1
 }
