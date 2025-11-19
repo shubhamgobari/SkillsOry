@@ -16,6 +16,7 @@ import React from 'react'
     import ATSImprovement from './pages/ATSImprovement'
     import CodingChallenge from './pages/CodingChallenge'
     import CoderPad from './pages/CoderPad'
+    import PDFViewer from './pages/PDFViewer'
     import ProtectedRoute from './components/ProtectedRoute'
 
     function App() {
@@ -23,7 +24,7 @@ import React from 'react'
         <AuthProvider>
           <JobProvider>
             <Router>
-              <div data-component-path="client/src/App.jsx" data-component-line="24:4" data-component-id="client/src/App.jsx:24:4" className="min-h-screen bg-gray-50">
+              <div data-component-path="client/src/App.jsx" data-component-line="25:4" data-component-id="client/src/App.jsx:25:4" className="min-h-screen bg-gray-50">
                 <Navbar />
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -31,6 +32,7 @@ import React from 'react'
                   <Route path="/jobs/:id" element={<JobDetails />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
+                  <Route path="/pdf-viewer" element={<PDFViewer />} />
                   <Route 
                     path="/post-job" 
                     element={

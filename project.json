@@ -2,14 +2,18 @@
   "project_uid": "twwonv",
   "type": "fullstack",
   "files": [
-    "TalentFlow-System-Flow.md"
+    "client/src/pages/PDFViewer.jsx",
+    "client/src/App.jsx",
+    "client/src/components/Navbar.jsx"
   ],
   "structure": {
-    "client": [],
+    "client": [
+      "client/src/pages/PDFViewer.jsx",
+      "client/src/App.jsx",
+      "client/src/components/Navbar.jsx"
+    ],
     "server": [],
-    "root": [
-      "TalentFlow-System-Flow.md"
-    ]
+    "root": []
   },
-  "file_count": 1
+  "file_count": 3
 }
