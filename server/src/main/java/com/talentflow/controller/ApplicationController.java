@@ -4,8 +4,9 @@ package com.talentflow.controller;
     import org.springframework.web.bind.annotation.*;
 
     import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
-    @RestController
+@RestController
     @RequestMapping("/api/applications")
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"})
     public class ApplicationController {
@@ -49,7 +50,7 @@ package com.talentflow.controller;
             applicationData.put("status", "pending");
             
             // Calculate mock ATS score
-            applicationData.put("atsScore", 65 + (int)(Math.random() * 30));
+            applicationData.put("atsScore", 65 + (int)(ThreadLocalRandom.current().nextDouble() * 30));
             
             return ResponseEntity.ok(applicationData);
         }
