@@ -1,4 +1,4 @@
-# TalentFlow - Recruitment Platform
+# Skills Ory - Recruitment Platform
 
     A modern, comprehensive recruitment platform built with React frontend and Spring Boot backend that streamlines the entire hiring process from job posting to final selection.
 
@@ -63,7 +63,7 @@
     1. Clone the repository:
     ```bash
     git clone <repository-url>
-    cd talentflow-recruitment-platform
+    cd skillsory-recruitment-platform
     ```
 
     2. Install all dependencies:
@@ -129,7 +129,7 @@
       port: 8080
     spring:
       datasource:
-        url: jdbc:h2:mem:talentflow
+        url: jdbc:h2:mem:skillsory
         username: sa
         password: password
     ```
@@ -138,7 +138,7 @@
 
     **Development**: H2 in-memory database
     - Console: http://localhost:8080/h2-console
-    - JDBC URL: `jdbc:h2:mem:talentflow`
+    - JDBC URL: `jdbc:h2:mem:skillsory`
     - Username: `sa`
     - Password: `password`
 
@@ -158,7 +158,7 @@
     ## Project Structure
 
     ```
-    talentflow-recruitment-platform/
+    skillsory-recruitment-platform/
     ├── client/                          # React frontend
     │   ├── src/
     │   │   ├── components/              # Reusable UI components
@@ -170,7 +170,7 @@
     │   ├── public/                      # Static assets
     │   └── index.html                   # Entry HTML file
     ├── server/                          # Spring Boot backend
-    │   ├── src/main/java/com/talentflow/
+    │   ├── src/main/java/com/skillsory/
     │   │   ├── config/                  # Configuration classes
     │   │   ├── controller/              # REST controllers
     │   │   ├── service/                 # Business logic

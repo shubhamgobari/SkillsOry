@@ -1,4 +1,4 @@
-# TalentFlow Platform - Complete System Flow
+# Skills Ory Platform - Complete System Flow
 
 ```mermaid
 graph TD
@@ -235,4 +235,4 @@ graph TD
 - Real-time data synchronization
 - Cross-role data access patterns
 
-This flow demonstrates how TalentFlow creates a seamless experience where "skills meet stories" through intelligent matching, comprehensive evaluation, and data-driven insights.
+This flow demonstrates how Skills Ory creates a seamless experience where "skills meet stories" through intelligent matching, comprehensive evaluation, and data-driven insights.

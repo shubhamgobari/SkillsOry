@@ -12,11 +12,11 @@
             <relativePath/>
         </parent>
         
-        <groupId>com.talentflow</groupId>
+        <groupId>com.skillsory</groupId>
         <artifactId>recruitment-backend</artifactId>
         <version>1.0.0</version>
-        <name>TalentFlow Backend</name>
-        <description>Spring Boot backend for TalentFlow recruitment platform</description>
+        <name>Skills Ory Backend</name>
+        <description>Spring Boot backend for Skills Ory recruitment platform</description>
         
         <properties>
             <java.version>21</java.version>

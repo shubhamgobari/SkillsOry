@@ -24,7 +24,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
       }, [])
 
       const loadJobs = () => {
-        const savedJobs = localStorage.getItem('talentflow_jobs')
+        const savedJobs = localStorage.getItem('skillsory_jobs')
         if (savedJobs) {
           setJobs(JSON.parse(savedJobs))
         } else {
@@ -60,12 +60,12 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
             }
           ]
           setJobs(sampleJobs)
-          localStorage.setItem('talentflow_jobs', JSON.stringify(sampleJobs))
+          localStorage.setItem('skillsory_jobs', JSON.stringify(sampleJobs))
         }
       }
 
       const loadApplications = () => {
-        const savedApplications = localStorage.getItem('talentflow_applications')
+        const savedApplications = localStorage.getItem('skillsory_applications')
         if (savedApplications) {
           setApplications(JSON.parse(savedApplications))
         } else {
@@ -83,7 +83,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
         
         const updatedJobs = [...jobs, newJob]
         setJobs(updatedJobs)
-        localStorage.setItem('talentflow_jobs', JSON.stringify(updatedJobs))
+        localStorage.setItem('skillsory_jobs', JSON.stringify(updatedJobs))
         toast.success('Job posted successfully!')
         return newJob
       }
@@ -111,7 +111,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 
         const updatedApplications = [...applications, newApplication]
         setApplications(updatedApplications)
-        localStorage.setItem('talentflow_applications', JSON.stringify(updatedApplications))
+        localStorage.setItem('skillsory_applications', JSON.stringify(updatedApplications))
         
         // Send CoderPad link via email simulation
         setTimeout(() => {
@@ -156,7 +156,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
             : app
         )
         setApplications(updatedApplications)
-        localStorage.setItem('talentflow_applications', JSON.stringify(updatedApplications))
+        localStorage.setItem('skillsory_applications', JSON.stringify(updatedApplications))
       }
 
       const getApplicationsByUser = (userId) => {
@@ -178,7 +178,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
             : app
         )
         setApplications(updatedApplications)
-        localStorage.setItem('talentflow_applications', JSON.stringify(updatedApplications))
+        localStorage.setItem('skillsory_applications', JSON.stringify(updatedApplications))
         
         toast.success(result.passed ? 'Challenge completed successfully!' : 'Challenge submitted')
       }

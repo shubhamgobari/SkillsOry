@@ -34,7 +34,7 @@ import React from 'react'
           name: 'Sarah Chen',
           role: 'Software Engineer',
           company: 'TechCorp',
-          content: 'TalentFlow helped me tell my story beyond just my resume. I found my dream job where my passion for innovation truly matters.',
+          content: 'Skills Ory helped me tell my story beyond just my resume. I found my dream job where my passion for innovation truly matters.',
           rating: 5
         },
         {
@@ -48,7 +48,7 @@ import React from 'react'
           name: 'Emily Johnson',
           role: 'UX Designer',
           company: 'DesignCo',
-          content: 'As a career changer, I loved how TalentFlow let me showcase my unique journey and transferable skills.',
+          content: 'As a career changer, I loved how Skills Ory let me showcase my unique journey and transferable skills.',
           rating: 5
         }
       ]

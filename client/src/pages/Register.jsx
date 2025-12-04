@@ -68,7 +68,7 @@ import React, { useState } from 'react'
           <div data-component-path="client/src/pages/Register.jsx" data-component-line="61:6" data-component-id="client/src/pages/Register.jsx:61:6" className="max-w-md w-full space-y-8">
             <div data-component-path="client/src/pages/Register.jsx" data-component-line="62:8" data-component-id="client/src/pages/Register.jsx:62:8" className="text-center">
               <h2 data-component-path="client/src/pages/Register.jsx" data-component-line="63:10" data-component-id="client/src/pages/Register.jsx:63:10" className="text-3xl font-bold text-gray-900 mb-2">
-                Join TalentFlow
+                Join Skills Ory
               </h2>
               <p data-component-path="client/src/pages/Register.jsx" data-component-line="66:10" data-component-id="client/src/pages/Register.jsx:66:10" className="text-gray-600">
                 Start your journey where skills meet stories

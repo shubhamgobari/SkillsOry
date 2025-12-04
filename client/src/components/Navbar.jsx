@@ -45,7 +45,7 @@ import React from 'react'
                 <div data-component-path="client/src/components/Navbar.jsx" data-component-line="38:12" data-component-id="client/src/components/Navbar.jsx:38:12" className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                   <Briefcase data-component-path="client/src/components/Navbar.jsx" data-component-line="39:14" data-component-id="client/src/components/Navbar.jsx:39:14" className="text-white" size={20} />
                 </div>
-                <span data-component-path="client/src/components/Navbar.jsx" data-component-line="41:12" data-component-id="client/src/components/Navbar.jsx:41:12" className="text-xl font-bold text-gray-900">TalentFlow</span>
+                <span data-component-path="client/src/components/Navbar.jsx" data-component-line="41:12" data-component-id="client/src/components/Navbar.jsx:41:12" className="text-xl font-bold text-gray-900">Skills Ory</span>
               </Link>
 
               {/* Navigation Links */}

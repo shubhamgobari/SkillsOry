@@ -20,13 +20,13 @@ export const AuthProvider = ({ children }) => {
     initializeDemoAccounts()
     
     // Check for existing user session
-    const savedUser = localStorage.getItem('talentflow_user')
+    const savedUser = localStorage.getItem('skillsory_user')
     if (savedUser) {
       try {
         setUser(JSON.parse(savedUser))
       } catch (error) {
         console.error('Error parsing saved user:', error)
-        localStorage.removeItem('talentflow_user')
+        localStorage.removeItem('skillsory_user')
       }
     }
     setLoading(false)
@@ -61,16 +61,14 @@ export const AuthProvider = ({ children }) => {
     ]
 
     // Always ensure demo accounts exist
-    const existingUsers = JSON.parse(localStorage.getItem('talentflow_users') || '[]')
-    
-    // Remove any existing demo accounts to avoid duplicates
+      const existingUsers = JSON.parse(localStorage.getItem('skillsory_users') || '[]')    // Remove any existing demo accounts to avoid duplicates
     const nonDemoUsers = existingUsers.filter(user => 
       !demoAccounts.some(demo => demo.email === user.email)
     )
     
     // Add fresh demo accounts
     const updatedUsers = [...nonDemoUsers, ...demoAccounts]
-    localStorage.setItem('talentflow_users', JSON.stringify(updatedUsers))
+    localStorage.setItem('skillsory_users', JSON.stringify(updatedUsers))
     
     console.log('Demo accounts initialized:', demoAccounts.map(acc => acc.email))
   }
@@ -78,7 +76,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       // Get fresh user data from localStorage
-      const users = JSON.parse(localStorage.getItem('talentflow_users') || '[]')
+      const users = JSON.parse(localStorage.getItem('skillsory_users') || '[]')
       console.log('Available users:', users.map(u => u.email))
       
       const foundUser = users.find(u => u.email === email && u.password === password)
@@ -86,7 +84,7 @@ export const AuthProvider = ({ children }) => {
       if (foundUser) {
         const { password: _, ...userWithoutPassword } = foundUser
         setUser(userWithoutPassword)
-        localStorage.setItem('talentflow_user', JSON.stringify(userWithoutPassword))
+        localStorage.setItem('skillsory_user', JSON.stringify(userWithoutPassword))
         toast.success(`Welcome back, ${userWithoutPassword.name}!`)
         return { success: true, user: userWithoutPassword }
       } else {
@@ -111,7 +109,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       // Mock registration - in real app, this would be an API call
-      const users = JSON.parse(localStorage.getItem('talentflow_users') || '[]')
+      const users = JSON.parse(localStorage.getItem('skillsory_users') || '[]')
       
       // Check if user already exists
       if (users.find(u => u.email === userData.email)) {
@@ -126,11 +124,11 @@ export const AuthProvider = ({ children }) => {
       }
 
       users.push(newUser)
-      localStorage.setItem('talentflow_users', JSON.stringify(users))
+      localStorage.setItem('skillsory_users', JSON.stringify(users))
       
       const { password: _, ...userWithoutPassword } = newUser
       setUser(userWithoutPassword)
-      localStorage.setItem('talentflow_user', JSON.stringify(userWithoutPassword))
+      localStorage.setItem('skillsory_user', JSON.stringify(userWithoutPassword))
       
       toast.success('Registration successful!')
       return { success: true, user: userWithoutPassword }
@@ -142,7 +140,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null)
-    localStorage.removeItem('talentflow_user')
+    localStorage.removeItem('skillsory_user')
     toast.success('Logged out successfully')
   }
 

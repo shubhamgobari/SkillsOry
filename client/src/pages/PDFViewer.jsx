@@ -12,7 +12,7 @@ import React, { useState, useEffect } from 'react'
       // Since this is a private file for context only, we'll show a placeholder
       const pdfInfo = {
         name: 'System Architecture Diagram',
-        description: 'TalentFlow recruitment platform system architecture and flow diagram',
+        description: 'Skills Ory recruitment platform system architecture and flow diagram',
         type: 'System Documentation',
         uploadedAt: new Date().toISOString()
       }
@@ -154,7 +154,7 @@ import React, { useState, useEffect } from 'react'
                       System Architecture Diagram
                     </h3>
                     <p data-component-path="client/src/pages/PDFViewer.jsx" data-component-line="95:95" data-component-id="client/src/pages/PDFViewer.jsx:95:95" className="text-blue-700 mb-4">
-                      This document contains the TalentFlow recruitment platform system architecture and workflow diagrams.
+                      This document contains the Skills Ory recruitment platform system architecture and workflow diagrams.
                     </p>
                     <div data-component-path="client/src/pages/PDFViewer.jsx" data-component-line="98:98" data-component-id="client/src/pages/PDFViewer.jsx:98:98" className="bg-white rounded-lg p-4 border border-blue-200">
                       <div data-component-path="client/src/pages/PDFViewer.jsx" data-component-line="99:99" data-component-id="client/src/pages/PDFViewer.jsx:99:99" className="flex items-center text-blue-800 mb-2">
@@ -163,7 +163,7 @@ import React, { useState, useEffect } from 'react'
                       </div>
                       <p data-component-path="client/src/pages/PDFViewer.jsx" data-component-line="103:103" data-component-id="client/src/pages/PDFViewer.jsx:103:103" className="text-sm text-blue-700 text-left">
                         This document is available for reference and contains important system architecture information. 
-                        The diagram shows the complete flow of the TalentFlow recruitment platform including user interactions, 
+                        The diagram shows the complete flow of the Skills Ory recruitment platform including user interactions, 
                         data processing, and system integrations.
                       </p>
                     </div>

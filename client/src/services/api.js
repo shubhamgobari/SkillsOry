@@ -5,7 +5,7 @@
     class ApiClient {
       constructor() {
         this.baseURL = API_BASE_URL
-        this.token = localStorage.getItem('talentflow_token')
+        this.token = localStorage.getItem('skillsory_token')
       }
 
       async request(endpoint, options = {}) {
@@ -52,9 +52,9 @@
       setToken(token) {
         this.token = token
         if (token) {
-          localStorage.setItem('talentflow_token', token)
+          localStorage.setItem('skillsory_token', token)
         } else {
-          localStorage.removeItem('talentflow_token')
+          localStorage.removeItem('skillsory_token')
         }
       }
 

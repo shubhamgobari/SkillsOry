@@ -1,4 +1,4 @@
-package com.talentflow.controller;
+package com.skillsory.controller;
 
     import org.springframework.http.ResponseEntity;
     import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.talentflow.config;
+package com.skillsory.config;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
