@@ -5,8 +5,6 @@ package com.skillsory.config;
     import org.springframework.security.config.annotation.web.builders.HttpSecurity;
     import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
     import org.springframework.security.config.http.SessionCreationPolicy;
-    import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-    import org.springframework.security.crypto.password.PasswordEncoder;
     import org.springframework.security.web.SecurityFilterChain;
     import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -33,13 +31,8 @@ package com.skillsory.config;
                     .requestMatchers("/api/jobs/**").permitAll()
                     .anyRequest().authenticated()
                 )
-                .headers(headers -> headers.frameOptions().disable()); // For H2 console
+                .headers(headers -> headers.disable());
 
             return http.build();
-        }
-
-        @Bean
-        public PasswordEncoder passwordEncoder() {
-            return new BCryptPasswordEncoder();
         }
     }
