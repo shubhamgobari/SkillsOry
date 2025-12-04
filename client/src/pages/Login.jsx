@@ -192,7 +192,7 @@ const Login = () => {
         </div>
 
         {/* Demo Accounts */}
-        <div data-component-path="client/src/pages/Login.jsx" data-component-line="126:8" data-component-id="client/src/pages/Login.jsx:126:8" className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+        {/* <div data-component-path="client/src/pages/Login.jsx" data-component-line="126:8" data-component-id="client/src/pages/Login.jsx:126:8" className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
           <h3 data-component-path="client/src/pages/Login.jsx" data-component-line="127:10" data-component-id="client/src/pages/Login.jsx:127:10" className="text-lg font-semibold text-blue-900 mb-4 text-center flex items-center justify-center">
             <Play data-component-path="client/src/pages/Login.jsx" data-component-line="128:12" data-component-id="client/src/pages/Login.jsx:128:12" className="mr-2" size={20} />
             Try Demo Accounts - One-Click Login
@@ -231,7 +231,7 @@ const Login = () => {
               ✨ Click any demo account above to login instantly and explore the platform!
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

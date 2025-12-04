@@ -4,6 +4,7 @@ import com.skillsory.dto.LoginRequest;
 import com.skillsory.dto.LoginResponse;
 import com.skillsory.dto.RegisterRequest;
 import com.skillsory.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class AuthController {
     private AuthService authService;
     
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
         try {
             LoginResponse response = authService.login(request);
             return ResponseEntity.ok(response);
