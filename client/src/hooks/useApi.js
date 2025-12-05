@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
     import toast from 'react-hot-toast'
 
     // Custom hook for API calls with loading and error states
@@ -7,25 +7,25 @@ import { useState, useEffect } from 'react'
       const [loading, setLoading] = useState(true)
       const [error, setError] = useState(null)
 
-      useEffect(() => {
-        const fetchData = async () => {
-          try {
-            setLoading(true)
-            setError(null)
-            const result = await apiCall()
-            setData(result)
-          } catch (err) {
-            setError(err.message)
-            toast.error(err.message)
-          } finally {
-            setLoading(false)
-          }
+      const fetchData = useCallback(async () => {
+        try {
+          setLoading(true)
+          setError(null)
+          const result = await apiCall()
+          setData(result)
+        } catch (err) {
+          setError(err.message)
+          toast.error(err.message)
+        } finally {
+          setLoading(false)
         }
-
-        fetchData()
       }, dependencies)
 
-      return { data, loading, error, refetch: () => fetchData() }
+      useEffect(() => {
+        fetchData()
+      }, [fetchData])
+
+      return { data, loading, error, refetch: fetchData }
     }
 
     // Custom hook for API mutations (POST, PUT, DELETE)

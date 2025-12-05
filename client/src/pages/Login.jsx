@@ -50,35 +50,35 @@ const Login = () => {
   const demoAccounts = [
     { 
       email: 'candidate@demo.com', 
-      password: 'demo123', 
-      role: 'Candidate',
+      password: 'Demo123!', 
+      role: 'candidate',
       name: 'John Candidate',
       description: 'Browse jobs, apply, and track applications'
     },
     { 
       email: 'client@demo.com', 
-      password: 'demo123', 
-      role: 'Client',
+      password: 'Demo123!', 
+      role: 'client',
       name: 'Sarah Client', 
       description: 'Post jobs and manage applications'
     },
     { 
       email: 'admin@demo.com', 
-      password: 'demo123', 
-      role: 'Admin',
+      password: 'Demo123!', 
+      role: 'admin',
       name: 'Mike Admin',
       description: 'Platform overview and user management'
     }
   ]
 
-  const handleDemoLogin = async (email, password) => {
+  const handleDemoLogin = async (email, password, role, name) => {
     if (loading) return // Prevent multiple clicks
     
     setLoading(true)
     console.log('Demo login clicked:', email)
     
     try {
-      const result = await loginWithDemo(email, password)
+      const result = await loginWithDemo(email, password, role, name)
       
       if (result.success) {
         // Redirect based on user role

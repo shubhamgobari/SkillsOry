@@ -3,6 +3,7 @@ package com.skillsory.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 
 public class RegisterRequest {
     @NotBlank(message = "Name is required")
@@ -14,7 +15,11 @@ public class RegisterRequest {
     private String email;
 
     @NotBlank(message = "Password is required")
-    @Size(min = 6)
+    @Size(min = 8, message = "Password must be at least 8 characters long")
+    @Pattern(
+        regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).+$",
+        message = "Password must include uppercase, lowercase, number, and symbol"
+    )
     private String password;
 
     @NotBlank(message = "Role is required")
