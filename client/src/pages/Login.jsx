@@ -50,35 +50,35 @@ const Login = () => {
   const demoAccounts = [
     { 
       email: 'candidate@demo.com', 
-      password: 'demo123', 
-      role: 'Candidate',
+      password: 'Demo123!', 
+      role: 'candidate',
       name: 'John Candidate',
       description: 'Browse jobs, apply, and track applications'
     },
     { 
       email: 'client@demo.com', 
-      password: 'demo123', 
-      role: 'Client',
+      password: 'Demo123!', 
+      role: 'client',
       name: 'Sarah Client', 
       description: 'Post jobs and manage applications'
     },
     { 
       email: 'admin@demo.com', 
-      password: 'demo123', 
-      role: 'Admin',
+      password: 'Demo123!', 
+      role: 'admin',
       name: 'Mike Admin',
       description: 'Platform overview and user management'
     }
   ]
 
-  const handleDemoLogin = async (email, password) => {
+  const handleDemoLogin = async (email, password, role, name) => {
     if (loading) return // Prevent multiple clicks
     
     setLoading(true)
     console.log('Demo login clicked:', email)
     
     try {
-      const result = await loginWithDemo(email, password)
+      const result = await loginWithDemo(email, password, role, name)
       
       if (result.success) {
         // Redirect based on user role
@@ -192,7 +192,7 @@ const Login = () => {
         </div>
 
         {/* Demo Accounts */}
-        <div data-component-path="client/src/pages/Login.jsx" data-component-line="126:8" data-component-id="client/src/pages/Login.jsx:126:8" className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+        {/* <div data-component-path="client/src/pages/Login.jsx" data-component-line="126:8" data-component-id="client/src/pages/Login.jsx:126:8" className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
           <h3 data-component-path="client/src/pages/Login.jsx" data-component-line="127:10" data-component-id="client/src/pages/Login.jsx:127:10" className="text-lg font-semibold text-blue-900 mb-4 text-center flex items-center justify-center">
             <Play data-component-path="client/src/pages/Login.jsx" data-component-line="128:12" data-component-id="client/src/pages/Login.jsx:128:12" className="mr-2" size={20} />
             Try Demo Accounts - One-Click Login
@@ -231,7 +231,7 @@ const Login = () => {
               ✨ Click any demo account above to login instantly and explore the platform!
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

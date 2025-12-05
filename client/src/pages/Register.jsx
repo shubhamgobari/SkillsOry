@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
     import { Link, useNavigate } from 'react-router-dom'
     import { useAuth } from '../contexts/AuthContext'
     import { User, Mail, Lock, Eye, EyeOff, UserCheck } from 'lucide-react'
@@ -33,8 +34,9 @@ import React, { useState } from 'react'
           return
         }
 
-        if (formData.password.length < 6) {
-          toast.error('Password must be at least 6 characters')
+        const strong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/
+        if (!strong.test(formData.password)) {
+          toast.error('Password must be 8+ chars with uppercase, lowercase, number, and symbol')
           return
         }
 
@@ -169,6 +171,7 @@ import React, { useState } from 'react'
                     >
                       {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                     </button>
+                    <p className="text-xs text-gray-500 mt-2">Must be 8+ characters with uppercase, lowercase, number, and symbol.</p>
                   </div>
                 </div>
 

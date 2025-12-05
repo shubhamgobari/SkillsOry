@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
+import { authAPI } from '@/services/api'
 
 const AuthContext = createContext()
 
@@ -16,10 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Initialize demo accounts first, then check for existing user session
-    initializeDemoAccounts()
-    
-    // Check for existing user session
+    // Restore existing user session if present
     const savedUser = localStorage.getItem('skillsory_user')
     if (savedUser) {
       try {
@@ -32,113 +30,69 @@ export const AuthProvider = ({ children }) => {
     setLoading(false)
   }, [])
 
-  const initializeDemoAccounts = () => {
-    const demoAccounts = [
-      {
-        id: 'demo-candidate-1',
-        name: 'John Candidate',
-        email: 'candidate@demo.com',
-        password: 'demo123',
-        role: 'candidate',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: 'demo-client-1', 
-        name: 'Sarah Client',
-        email: 'client@demo.com',
-        password: 'demo123',
-        role: 'client',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: 'demo-admin-1',
-        name: 'Mike Admin', 
-        email: 'admin@demo.com',
-        password: 'demo123',
-        role: 'admin',
-        createdAt: new Date().toISOString()
-      }
-    ]
-
-    // Always ensure demo accounts exist
-      const existingUsers = JSON.parse(localStorage.getItem('skillsory_users') || '[]')    // Remove any existing demo accounts to avoid duplicates
-    const nonDemoUsers = existingUsers.filter(user => 
-      !demoAccounts.some(demo => demo.email === user.email)
-    )
-    
-    // Add fresh demo accounts
-    const updatedUsers = [...nonDemoUsers, ...demoAccounts]
-    localStorage.setItem('skillsory_users', JSON.stringify(updatedUsers))
-    
-    console.log('Demo accounts initialized:', demoAccounts.map(acc => acc.email))
-  }
+  const initializeDemoAccounts = () => {}
 
   const login = async (email, password) => {
     try {
-      // Get fresh user data from localStorage
-      const users = JSON.parse(localStorage.getItem('skillsory_users') || '[]')
-      console.log('Available users:', users.map(u => u.email))
-      
-      const foundUser = users.find(u => u.email === email && u.password === password)
-      
-      if (foundUser) {
-        const { password: _, ...userWithoutPassword } = foundUser
-        setUser(userWithoutPassword)
-        localStorage.setItem('skillsory_user', JSON.stringify(userWithoutPassword))
-        toast.success(`Welcome back, ${userWithoutPassword.name}!`)
-        return { success: true, user: userWithoutPassword }
-      } else {
-        toast.error('Invalid email or password')
-        return { success: false, error: 'Invalid credentials' }
+      const res = await authAPI.login(email, password)
+      if (res && res.success) {
+        const userPayload = {
+          id: res.userId,
+          name: res.name,
+          email: res.email,
+          role: res.role.toLowerCase(),
+        }
+        setUser(userPayload)
+        localStorage.setItem('skillsory_user', JSON.stringify(userPayload))
+        toast.success(`Welcome back, ${userPayload.name}!`)
+        return { success: true, user: userPayload }
       }
+      toast.error(res?.message || 'Invalid credentials')
+      return { success: false, error: res?.message || 'Invalid credentials' }
     } catch (error) {
-      console.error('Login error:', error)
-      toast.error('Login failed')
+      toast.error(error.message || 'Login failed')
       return { success: false, error: error.message }
     }
   }
 
-  const loginWithDemo = async (email, password) => {
-    console.log('Demo login attempt:', email)
-    // Ensure demo accounts are available before login
-    initializeDemoAccounts()
-    // Use the regular login function
-    return await login(email, password)
+  const loginWithDemo = async (email, password, role = 'candidate', name = 'Demo User') => {
+    try {
+      const loginRes = await login(email, password)
+      if (loginRes?.success) return loginRes
+
+      const registerRes = await register({ name, email, password, role })
+      return registerRes
+    } catch (error) {
+      toast.error(error.message || 'Demo login failed')
+      return { success: false, error: error.message }
+    }
   }
 
   const register = async (userData) => {
     try {
-      // Mock registration - in real app, this would be an API call
-      const users = JSON.parse(localStorage.getItem('skillsory_users') || '[]')
-      
-      // Check if user already exists
-      if (users.find(u => u.email === userData.email)) {
-        toast.error('User already exists')
-        return { success: false, error: 'User already exists' }
+      const res = await authAPI.register(userData)
+      if (res && res.success) {
+        const userPayload = {
+          id: res.userId,
+          name: res.name,
+          email: res.email,
+          role: res.role.toLowerCase(),
+        }
+        setUser(userPayload)
+        localStorage.setItem('skillsory_user', JSON.stringify(userPayload))
+        toast.success('Registration successful!')
+        return { success: true, user: userPayload }
       }
-
-      const newUser = {
-        id: Date.now().toString(),
-        ...userData,
-        createdAt: new Date().toISOString()
-      }
-
-      users.push(newUser)
-      localStorage.setItem('skillsory_users', JSON.stringify(users))
-      
-      const { password: _, ...userWithoutPassword } = newUser
-      setUser(userWithoutPassword)
-      localStorage.setItem('skillsory_user', JSON.stringify(userWithoutPassword))
-      
-      toast.success('Registration successful!')
-      return { success: true, user: userWithoutPassword }
+      toast.error(res?.message || 'Registration failed')
+      return { success: false, error: res?.message || 'Registration failed' }
     } catch (error) {
-      toast.error('Registration failed')
+      toast.error(error.message || 'Registration failed')
       return { success: false, error: error.message }
     }
   }
 
-  const logout = () => {
+  const logout = async () => {
+    try { await authAPI.logout() } catch {}
     setUser(null)
     localStorage.removeItem('skillsory_user')
     toast.success('Logged out successfully')
